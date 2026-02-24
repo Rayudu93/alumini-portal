@@ -58,8 +58,8 @@ SIMPLE_JWT = {
 # MIDDLEWARE
 # -----------------------------
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # must be at top for static files
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',           # must be first
+    'whitenoise.middleware.WhiteNoiseMiddleware',             # right after SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,7 +107,7 @@ USE_TZ = True
 # -----------------------------
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # optional if you have custom static folder
+STATICFILES_DIRS = []  # no source folder, only staticfiles
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # -----------------------------
